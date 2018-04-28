@@ -40,7 +40,7 @@ gem 'geocoder'
 gem 'cocoon'
 gem 'jquery-rails'
 gem 'fog'
-
+gem 'simple_form'
 gem 'webpacker'
 gem 'react-rails'
 
