@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428200353) do
+ActiveRecord::Schema.define(version: 20180428232019) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,7 @@ ActiveRecord::Schema.define(version: 20180428200353) do
     t.string "last_name"
     t.string "email"
     t.boolean "approved"
-    t.integer "permission_type"
+    t.integer "permission_type", default: 1
     t.string "password_digest"
     t.bigint "organization_id"
     t.datetime "created_at", null: false
