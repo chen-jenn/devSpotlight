@@ -16,6 +16,6 @@ Rails.application.routes.draw do
   end
 
   get('/', { to: 'welcome#index', as: 'home' })
-  get('/about', { to: 'welcome#show'} )
+  get('/about', { to: 'welcome#about'} )
 
 end
