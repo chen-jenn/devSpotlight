@@ -1,4 +1,5 @@
 class Admin::EventsController < ApplicationController
+<<<<<<< HEAD
   before_action :authenticate_user!
   before_action :authorize_admin!
 
@@ -28,4 +29,6 @@ class Admin::EventsController < ApplicationController
       redirect_to home_path
     end
   end
+=======
+>>>>>>> integration
 end

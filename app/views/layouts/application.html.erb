@@ -9,6 +9,29 @@
   </head>
 
   <body>
+
+    <nav class="navbar navbar-default">
+      <a class="navbar-brand" href="#">DevSpotlight</a>
+      |
+      <%= link_to 'Directory' %>
+      |
+      <%= link_to 'Events'%>
+      |
+      <%= link_to 'News'%>
+      |
+    </nav>
     <%= yield %>
+
+	<hr>
+	<div class="d-flex justify-content-between">
+      <div class="d-flex flex-column justify-content-start ml-4">
+				<a href="#">sign in</a>
+				<a href="#">sign up</a>
+				<a href="#">about</a>
+      </div>
+        <div class="d-flex align-items-end m-2">
+          © Built and maintained by Genius Coperation
+        </div>
+	</div>
   </body>
 </html>
