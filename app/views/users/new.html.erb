@@ -1,0 +1,10 @@
+<div class="container">
+  <%= simple_form_for @user do |f| %>
+    <%= f.input :first_name, label: "First Name", placeholder: 'Cedric'%>
+    <%= f.input :last_name, label: "Last Name", placeholder: 'Genius' %>
+    <%= f.input :email, placeholder: 'Genius_Cedric@gmail' %>
+    <%= f.input :password, label: "Password" %>
+    <%= f.input :password_confirmation, label: "Password Confirmation" %>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>
