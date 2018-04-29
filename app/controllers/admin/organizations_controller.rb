@@ -6,15 +6,6 @@ class Admin::OrganizationsController < ApplicationController
     @organizations = Organization.order(name: :asc)
   end
 
-  def edit
-    @organization = Organization.find params[:id]
-  end
-
-  def update
-  end
-
-  def destroy
-  end
 
   private
   def authorize_admin!

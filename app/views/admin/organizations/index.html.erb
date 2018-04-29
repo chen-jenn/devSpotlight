@@ -10,12 +10,13 @@
         <th>Address</th>
         <th>Twitter</th>
         <th>Published Status</th>
+        <th>Actions</th>
     </tr>
 
     <% @organizations.each do |organization| %>
     <tr>
       <td>
-        <h5><%= link_to organization.name, organization_path(organization) %></h5>
+        <h5><%= link_to organization.name, organization.website_url %></h5>
         <p>Related Tech</p>
         <%= organization.technologies.map { |technology| technology.name }.join(', ') %>
       </td>
@@ -25,6 +26,10 @@
       <td><%= organization.address %></td>
       <td><%= organization.twitter %></td>
       <td><%= organization.published %></td>
+      <td>
+        <%= link_to "Edit", edit_organization_path(organization) %>
+        <%= link_to "Delete",  organization_path(organization), method: :delete %>
+      </td>
     </tr>
     <% end %>
 

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     #if admin wants to create organization, go to the general create page
-    resources :organizations, except: [:new, :create, :show]
+    resources :organizations, only: [:index]
     resources :users, only: [:index, :destroy]
     resources :events
     resources :technologies, except: [:show, :edit, :update]
