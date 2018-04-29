@@ -8,14 +8,14 @@ Rails.application.routes.draw do
   resources :announcements
 
   namespace :admin do
-    resources :organizations, only: [:index]
-    resources :users, except: [:new, :create]
-    resources :events, only: [:index, :destroy, :edit]
-    resources :technologies, except: [:show, :edit, :update]
+    resources :organizations
+    resources :users, only: [:index, :destroy]
+    resources :events
+    resources :technologies
     resources :announcements
   end
 
   get('/', { to: 'welcome#index', as: 'home' })
-  get('/about', { to: 'welcome#show'} )
+  get('/about', { to: 'welcome#about'} )
 
 end

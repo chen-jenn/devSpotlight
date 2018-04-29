@@ -39,10 +39,12 @@ gem 'bootstrap'
 gem 'gmaps4rails'
 gem 'geocoder'
 gem 'cocoon'
-gem 'jquery-rails'
 gem 'fog'
 gem 'simple_form'
-
+gem 'underscore-rails'
+gem 'jquery-rails'
+gem 'carrierwave', '~> 1.0'
+gem "mini_magick"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
