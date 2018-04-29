@@ -6,13 +6,6 @@ class Admin::OrganizationsController < ApplicationController
     @organizations = Organization.order(name: :asc)
   end
 
-  def new
-  end
-
-  def create
-
-  end
-
   def edit
   end
 
@@ -31,11 +24,4 @@ class Admin::OrganizationsController < ApplicationController
   end
 
 
-<<<<<<< HEAD
-=======
-  def organization_params
-    params.require(:organization).permit(:name, :description, :employee_count, :tech_team_size, :image, :address, :website_url, :twitter, { technology_ids: [] }), :published
-  end
-
->>>>>>> d685936c8ba02bb92e9471c5e54c4d81049621d2
 end
