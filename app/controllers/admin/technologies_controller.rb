@@ -3,27 +3,28 @@ class Admin::TechnologiesController < ApplicationController
   before_action :authorize_admin!
 
   def index
-    @announcements = Annoucement.order(created_at: :desc)
+    @technologies = Technology.order(name: :asc)
   end
 
   def new
+    @technology = Technology.new
   end
 
   def create
-  end
+    @technology = Technology.new
 
-  def edit
-  end
+    if @technology.save
+      redirect_to admin_technologies_path
+    else
+      render :new 
+    end
 
-  def update
   end
 
   def destroy
+    @technology.destroy
+    redirect_to admin_technologies_path
   end
-
-  # def show
-    # might not need
-  # end
 
   private
   def authorize_admin!
