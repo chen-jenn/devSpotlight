@@ -1,7 +1,6 @@
 class OrganizationsController < ApplicationController
-
-  before_action :authenticate_user!
-  before_action :authorize_admin!, except: [:index, :new, :create]  
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authorize_admin!, except: [:index, :new, :create]
 
   def index
     @organizations = Organization.order(created_at: :desc)
@@ -14,11 +13,11 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new organization_params
     @user = current_user
-    
+
     if user_signed_in?
       if @organization.save
         @user.update is_creator: true
-        redirect_to organizations_path 
+        redirect_to organizations_path
       else
         render :new
       end
@@ -43,7 +42,7 @@ class OrganizationsController < ApplicationController
     @organization.destroy
 
     if current_user.permission_type == 'admin'
-      redirect_to admin_organizations_path 
+      redirect_to admin_organizations_path
     else
       redirect_to organizations_path
     end
