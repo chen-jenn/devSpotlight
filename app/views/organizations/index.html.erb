@@ -10,7 +10,33 @@
   <link rel="stylesheet" type="text/css" href="css_for_the_group_project.css">
   </head>
   <body>
-<h1>Google Map </h1>
+    <div class="container">
+      <div class="row">
+        <div class="col">
+    <div style='width: 800px;'>
+      <div id="map" style='width: 800px; height: 400px;'></div>
+    </div>
+
+    <script>
+    handler = Gmaps.build('Google');
+    handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+      markers = handler.addMarkers([
+        {
+          "lat": '49.280256',
+          "lng": '-123.107343',
+
+          "infowindow": "hello!"
+        }
+      ]);
+      handler.bounds.extendWith(markers);
+      handler.fitMapToBounds();
+      handler.getMap().setZoom(17)
+    });
+
+    </script>
+  </div>
+    </div>
+      </div>
 <hr/>
 <div class="container">
   <div class="row">
