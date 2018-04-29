@@ -1,6 +1,6 @@
 <h3>Add new technology (for the website)</h3>
 
-<%= simple_form_for @technology do |f| %>
+<%= simple_form_for @technology, url: admin_technologies_path, method: :post do |f| %>
   <%= f.input :name %>
   <%= f.submit "Submit", class: 'btn btn-primary' %>
 <% end %>
