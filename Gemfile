@@ -42,6 +42,9 @@ gem 'cocoon'
 gem 'jquery-rails'
 gem 'fog'
 gem 'simple_form'
+gem 'underscore-rails'
+gem 'gmaps4rails'
+gem 'jquery-rails'
 
 
 group :development, :test do
