@@ -1,11 +1,17 @@
 <div class="container">
   This is Event Page
   <hr/>
+  <%= month_calendar do |date| %>
+    <%= date %>
+  <% end %>
+  <hr/>
+<div>
   <% @events["results"].each do |e| %>
   <h1>  <%= e["group"]["who"] %> </h1>
   <h2><a href="<%= e["event_url"] %>">  <%= e["group"]["name"] %>  </a> </h2>
+  <p><%= Time.at(e["time"]).strftime("%H:%M:%S") %></p>
   <p>  <%= e["description"] %></p>
   <hr/>
-
-  <% end %>
+    <% end %>
 </div>
+  </div>

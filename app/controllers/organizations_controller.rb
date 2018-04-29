@@ -1,7 +1,7 @@
 class OrganizationsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :authorize_admin!
+  before_action :authorize_admin!, except: [:index, :new, :create]  
 
   def index
     @organizations = Organization.order(created_at: :desc)
@@ -13,10 +13,12 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new organization_params
-    @user = User.find params[:id]
-    if @user.permission_type != 1
+    @user = current_user
+    
+    if user_signed_in?
       if @organization.save
-        redirect_to organization_path
+        @user.update is_creator: true
+        redirect_to organizations_path 
       else
         render :new
       end
@@ -69,7 +71,7 @@ class OrganizationsController < ApplicationController
   end
 
   def authorize_admin!
-    unless current_user.permission_type == 3
+    unless current_user.permission_type == "admin"
       flash[:alert] = "Access Denied"
       redirect_to home_path
     end
