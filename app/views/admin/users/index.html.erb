@@ -16,8 +16,22 @@
        <td><%= link_to user.first_name, admin_user_path(user) %></td>
        <td><%= user.last_name %></td>
        <td><%= user.email %></td>
-       <td><%= user.permission_type %></td>
-       <td><%= user.organization.name %></td>
+
+       <% if user.permission_type == 'admin' %>
+         <td>Admin</td>
+       <% elsif user.permission_type == 'manager'%>
+         <td>Manager</td>
+       <% elsif user.permission_type == 'team_member' %>
+         <td>Employee</td>
+       <% end %>
+
+
+       <% if user.organization %>
+         <td><%= user.organization.name %></td>
+       <% else %>
+         <td>none</td>
+       <% end %>
+
        <!-- if the user has been accepted to be part of an organization -->
        <td><%= user.approved %></td>
      </tr>
