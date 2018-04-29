@@ -3,8 +3,8 @@ class AnnouncementsController < ApplicationController
   require 'news-api'
 
   def index
-    @newsapi = News.new('c5d28ab09641461793d60c537e0a0466')
-    @all_articles = @newsapi.get_everything(q: 'bitcoin',
+    @newsapi = News.new('9f5c53248fdd4c768aa4ce30b2f6eeb4')
+    @all_articles = @newsapi.get_everything(q: 'Web development',
                                       sources: 'bbc-news,the-verge',
                                       domains: 'bbc.co.uk,techcrunch.com',
                                       from: '2018-04-01',
