@@ -1,7 +1,6 @@
 class User < ApplicationRecord
-  belongs_to :organization
+  belongs_to :organization, optional: true
   has_secure_password
-  after_initialize :default_organization  
 
   validates :first_name, :last_name, presence: true
 
@@ -18,7 +17,4 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def default_organization
-    self.organization_id = 1
-  end
 end
