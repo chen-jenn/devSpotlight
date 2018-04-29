@@ -39,7 +39,12 @@ class OrganizationsController < ApplicationController
   def destroy
     @organization = Organization.find params[:id]
     @organization.destroy
-    redirect_to organizations_path
+
+    if current_user.permission_type == 'admin'
+      redirect_to admin_organizations_path 
+    else
+      redirect_to organizations_path
+    end
   end
 
   def to_param
@@ -71,5 +76,3 @@ class OrganizationsController < ApplicationController
   end
 
 end
-
-

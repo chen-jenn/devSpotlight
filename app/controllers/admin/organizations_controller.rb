@@ -5,8 +5,7 @@ class Admin::OrganizationsController < ApplicationController
   def index
     @organizations = Organization.order(name: :asc)
   end
-
-
+  
   private
   def authorize_admin!
     unless current_user.permission_type == 3
