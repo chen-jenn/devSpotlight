@@ -1,8 +1,8 @@
 class Admin::OrganizationsController < ApplicationController
-  before_action :authenticate_user! #is logged in
-  before_action :authorize_admin! # and is also admin
+  before_action :authenticate_user!
+  before_action :authorize_admin!
 
-  def index
+  def index #probably dont need this action either, unless to display more detailed information 
     @organizations = Organization.order(name: :asc)
   end
 
@@ -22,14 +22,10 @@ class Admin::OrganizationsController < ApplicationController
   def destroy
   end
 
-  # def show
-  #   # might not need
-  # end
-
   private
   def authorize_admin!
     unless current_user.permission_type == 3
-      flas[:alert] = "Access Denied"
+      flash[:alert] = "Access Denied"
       redirect_to home_path
     end
   end
