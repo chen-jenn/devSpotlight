@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :organizations, only: [:index]
     resources :users, except: [:new, :create]
-    resources :events
+    resources :events, only: [:index, :destroy, :edit]
     resources :technologies
     resources :announcements
   end

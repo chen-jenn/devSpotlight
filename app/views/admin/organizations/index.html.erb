@@ -4,5 +4,7 @@
 
 <% @organizations.each do |organization| %>
   <%= link_to organization.name, organization_path(organization) %>
+  <p>Related Tech</p>
+  <%= organization.technologies.map { |technology| technology.name }.join(', ') %>
   <hr>
 <% end %>

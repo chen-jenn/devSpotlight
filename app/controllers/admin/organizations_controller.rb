@@ -2,7 +2,7 @@ class Admin::OrganizationsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin!
 
-  def index #probably dont need this action either, unless to display more detailed information 
+  def index #probably dont need this action either, unless to display more detailed information
     @organizations = Organization.order(name: :asc)
   end
 

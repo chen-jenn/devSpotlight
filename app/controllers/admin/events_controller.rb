@@ -1,25 +1,26 @@
 class Admin::EventsController < ApplicationController
-<<<<<<< HEAD
   before_action :authenticate_user!
+  before_action :find_event, only: [:edit, :update, :destroy]
   before_action :authorize_admin!
 
   def index
-    @announcements = Annoucement.order(created_at: :desc)
-  end
-
-  def new
-  end
-
-  def create
+    @events = Event.order(created_at: :desc)
   end
 
   def edit
   end
 
   def update
+    if @event.update event_params
+      redirect_to admin_event_path(@event)
+    else
+      render :edit
+    end
   end
 
   def destroy
+    @event.destroy
+    redirect_to admin_events_path
   end
 
   private
@@ -29,6 +30,13 @@ class Admin::EventsController < ApplicationController
       redirect_to home_path
     end
   end
-=======
->>>>>>> integration
+
+  def find_event
+    @event = Event.find params[:id]
+  end
+
+  def event_params
+    params.require(:event).permit(:event_url, :event_date)
+  end
+
 end
