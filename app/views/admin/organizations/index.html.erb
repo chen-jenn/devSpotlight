@@ -3,16 +3,18 @@
 <table>
   <tbody>
     <tr>
-      <th>Name</th>
+      <th><h4><strong>Name</strong></h4></th>
+      <th>Description</th>
     </tr>
 
     <% @organizations.each do |organization| %>
     <tr>
       <td>
-        <%= link_to organization.name, organization_path(organization) %>
+        <h5><%= link_to organization.name, organization_path(organization) %></h5>
         <p>Related Tech</p>
         <%= organization.technologies.map { |technology| technology.name }.join(', ') %>
       </td>
+      <td><%= organization.description %></td>
     </tr>
     <% end %>
 
