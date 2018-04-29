@@ -39,7 +39,7 @@
           <%= link_to 'Create Organization', new_organization_path,{:class => "nav-link"}%>
         </li>
 
-         <% if current_user.present? && current_user.permission_type == 3  %>
+         <% if current_user.present? && current_user.permission_type == "admin"  %>
 
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
