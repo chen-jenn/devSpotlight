@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :organizations, only: [:index]
     resources :users, except: [:new, :create]
     resources :events, only: [:index, :destroy, :edit]
-    resources :technologies
+    resources :technologies, except: [:show]
     resources :announcements
   end
 
