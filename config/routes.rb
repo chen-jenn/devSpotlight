@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   resources :announcements
 
   namespace :admin do
-    resources :organizations, only: [:index]
+    resources :organizations, only: [:index, :edit, :create, :destroy]
     resources :users
     resources :events
     resources :technologies

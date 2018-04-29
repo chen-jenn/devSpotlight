@@ -3,11 +3,11 @@ class Admin::AnnouncementsController < ApplicationController
   before_action :authorize_admin!
 
   def index
-    @announcements = Annoucement.order(created_at: :desc)
+    @announcements = Announcement.order(created_at: :desc)
   end
 
   def new
-    @annoucement = Announcement.new
+    @announcement = Announcement.new
   end
 
   def create
