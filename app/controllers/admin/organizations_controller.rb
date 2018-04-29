@@ -2,11 +2,12 @@ class Admin::OrganizationsController < ApplicationController
   before_action :authenticate_user!
   before_action :authorize_admin!
 
-  def index 
+  def index
     @organizations = Organization.order(name: :asc)
   end
 
   def edit
+    @organization = Organization.find params[:id]
   end
 
   def update
@@ -24,6 +25,17 @@ class Admin::OrganizationsController < ApplicationController
   end
 
   def organization_params
-    params.require(:organization).permit(:name, :description, :employee_count, :tech_team_size, :image, :address, :website_url, :twitter, { technology_ids: [] }), :published
+    params.require(:organization).permit(
+      :name,
+      :description,
+      :employee_count,
+      :tech_team_size,
+      :image,
+      :address,
+      :website_url,
+      :twitter,
+      { technology_ids: [] },
+      :published
+    )
   end
 end

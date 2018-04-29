@@ -1,10 +1,20 @@
-<!-- A list of all the existing organizations -->
+<h1>Organizations Index</h1>
 
-<h1>Full list of Organizations</h1>
+<table>
+  <tbody>
+    <tr>
+      <th>Name</th>
+    </tr>
 
-<% @organizations.each do |organization| %>
-  <%= link_to organization.name, organization_path(organization) %>
-  <p>Related Tech</p>
-  <%= organization.technologies.map { |technology| technology.name }.join(', ') %>
-  <hr>
-<% end %>
+    <% @organizations.each do |organization| %>
+    <tr>
+      <td>
+        <%= link_to organization.name, organization_path(organization) %>
+        <p>Related Tech</p>
+        <%= organization.technologies.map { |technology| technology.name }.join(', ') %>
+      </td>
+    </tr>
+    <% end %>
+
+  </tbody>
+</table>
