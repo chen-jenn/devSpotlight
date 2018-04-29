@@ -7,6 +7,10 @@ class OrganizationsController < ApplicationController
     @organizations = Organization.order(created_at: :desc)
   end
 
+  def new
+    @organization = Organization.new
+  end
+
   def create
     @organization = Organization.new organization_params
     @user = User.find params[:id]
