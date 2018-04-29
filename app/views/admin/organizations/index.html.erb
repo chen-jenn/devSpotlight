@@ -1,1 +1,8 @@
 <!-- A list of all the existing organizations -->
+
+<h1>Full list of Organizations</h1>
+
+<% @organizations.each do |organization| %>
+  <%= link_to organization.name, organization_path(organization) %>
+  <hr>
+<% end %>
