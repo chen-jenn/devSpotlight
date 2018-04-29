@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   resources :announcements
 
   namespace :admin do
-    resources :organizations, only: [:index, :show]
-    resources :users
+    resources :organizations, only: [:index]
+    resources :users, except: [:new, :create]
     resources :events
     resources :technologies
     resources :announcements
