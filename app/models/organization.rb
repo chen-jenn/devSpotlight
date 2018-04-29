@@ -5,4 +5,6 @@ class Organization < ApplicationRecord
   has_many :technologies, through: :tech_stacks
 
   validates :name, presence: true, uniqueness: true
+
+  mount_uploader :image, ImageUploader
 end

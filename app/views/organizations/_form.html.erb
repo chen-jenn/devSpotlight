@@ -1,0 +1,17 @@
+<%= simple_form_for @organization do |f| %>
+  <%= f.input :name, required: false, label_html: { class: 'abc' } %>
+  <%= f.input :description, required: false, input_html: { class: 'abc' }%>
+  <%= f.input :employee_count, required: false %>
+  <%= f.input :tech_team_size, required: false %>
+  <%= f.input :address, required: false %>
+  <%= f.input :website_url, required: false %>
+  <%= f.input :twitter, required: false %>
+  <%= f.input :published, required: false %>
+  <%= f.association :technologies, input_html: { class: 'chosen-select' } %>
+  <%= f.input :image %>
+  <%= f.submit class: 'btn btn-primary' %>
+<% end %>
+
+<script>
+  $(".chosen-select").chosen({ max_selected_options: 10 });
+</script>       

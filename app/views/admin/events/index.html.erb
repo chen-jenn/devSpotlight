@@ -1,0 +1,25 @@
+<h1>Upcoming Events</h1>
+
+<table>
+  <tbody>
+   <tr>
+     <th>Event Name</th>
+     <th>Date</th>
+     <th>Organization</th>
+   </tr>
+
+
+  <% @events.each do |event| %>
+    <tr>
+  <!-- this will eventually be an external link -->
+    <td><%= link_to event.event_name, event.event_url %></td>
+    <!-- better date format -->
+    <td><%= event.date %></td>
+    <!-- link to the organization show page -->
+    <td><%= link_to event.organization.name, organization_path(event.organization) %></td>
+    <td><%= link_to "Edit", edit_admin_event_path(event)%></td>
+    <td><%= link_to "Delete", admin_event_path(event), method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
