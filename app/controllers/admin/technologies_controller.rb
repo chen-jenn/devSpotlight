@@ -6,19 +6,24 @@ class Admin::TechnologiesController < ApplicationController
     @technologies = Technology.order(name: :asc)
   end
 
-  def new 
+  def new
+    @technology = Technology.new
   end
 
   def create
-  end
+    @technology = Technology.new
 
-  def edit
-  end
+    if @technology.save
+      redirect_to admin_technologies_path
+    else
+      render :new 
+    end
 
-  def update
   end
 
   def destroy
+    @technology.destroy
+    redirect_to admin_technologies_path
   end
 
   private
