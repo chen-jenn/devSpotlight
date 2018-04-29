@@ -8,11 +8,13 @@
 
 PASSWORD = 'password'
 
+Organization.destroy_all 
 Technology.destroy_all
 TechStack.destroy_all
 User.destroy_all
 Event.destroy_all
 Announcement.destroy_all
+
 
 20.times do
   o = Organization.create(
