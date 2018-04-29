@@ -35,6 +35,9 @@
         <li class="nav-item">
           <%= link_to 'About', show_path,{:class => "nav-link"}%>
         </li>
+        <li class="nav-item">
+          <%= link_to 'Create Organization', new_organization_path,{:class => "nav-link"}%>
+        </li>
 
          <% if current_user.present? %>
 
