@@ -42,6 +42,8 @@ gem 'cocoon'
 gem 'jquery-rails'
 gem 'fog'
 gem 'simple_form'
+gem 'carrierwave', '~> 1.0'
+gem 'mini_magick'
 
 
 group :development, :test do
