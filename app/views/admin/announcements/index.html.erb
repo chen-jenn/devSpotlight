@@ -1,8 +1,8 @@
 <div class="container">
-<% @announcements.each do |announcement| %>
-  <tr>
-    <td><%= announcement.article_name %></td>
-    <td><%= announcement.article_url %></td>
-  </tr>
+  <h1>Articles <small>(external links)</small></h1>
+    <% @announcements.each do |announcement| %>
+      <%= link_to announcement.article_name, announcement.article_url %></br>
+      Organization: <%= announcement.organization.name %>
+      <hr>
 <% end %> %>
 </div>
