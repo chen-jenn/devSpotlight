@@ -1,7 +1,14 @@
 class EventsController < ApplicationController
 
   def index
-    @events = Event.order(created_at: :desc)
+    params = { category: '3',
+        city: 'Vancouver',
+        country: 'canada',
+        status: 'upcoming',
+        format: 'json',
+        page: '20'}
+      meetup_api = MeetupApi.new
+      @events = meetup_api.open_events(params)
   end
 
 end
