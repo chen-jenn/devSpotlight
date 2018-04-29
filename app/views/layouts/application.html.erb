@@ -10,18 +10,19 @@
 
   <body>
 
-    <nav class="navbar navbar-default">
+    <nav class="navbar navbar-default" role="navigation">
       <div class="navbar-header">
 
       <a class="navbar-brand" href="/">DevSpotlight</a>
-      |
-      <%= link_to 'Directory', organizations_path %>
-      |
-      <%= link_to 'Events', events_path %>
-      |
-      <%= link_to 'News', announcements_path%>
-      |
+        <%= link_to 'Directory', organizations_path ,{:class => "btn btn-info"}%>
+        <%= link_to 'Events', events_path,{:class => "btn btn-info"} %>
+        <%= link_to 'News', announcements_path,{:class => "btn btn-info"}%>
+      
     </div>
+
+
+
+
     </nav>
     <%= yield %>
 
