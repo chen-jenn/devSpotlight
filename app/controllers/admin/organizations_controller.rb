@@ -3,7 +3,7 @@ class Admin::OrganizationsController < ApplicationController
   before_action :authorize_admin!
 
   def index
-    @organizations = Organization.order(name: :asc)
+    @organizations = Organization.order(id: :asc)
   end
   
   private

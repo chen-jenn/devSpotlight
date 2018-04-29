@@ -1,37 +1,37 @@
-<h1>Organizations Index</h1>
-
-<table>
-  <tbody>
-    <tr>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Employee Count</th>
-        <th>Tech Team Size</th>
-        <th>Address</th>
-        <th>Twitter</th>
-        <th>Published Status</th>
-        <th>Actions</th>
-    </tr>
-
-    <% @organizations.each do |organization| %>
-    <tr>
-      <td>
-        <h5><%= link_to organization.name, organization.website_url %></h5>
-        <p>Related Tech</p>
-        <%= organization.technologies.map { |technology| technology.name }.join(', ') %>
-      </td>
-      <td><%= organization.description %></td>
-      <td><%= organization.employee_count %></td>
-      <td><%= organization.tech_team_size %></td>
-      <td><%= organization.address %></td>
-      <td><%= organization.twitter %></td>
-      <td><%= organization.published %></td>
-      <td>
-        <%= link_to "Edit", edit_organization_path(organization) %>
-        <%= link_to "Delete",  organization_path(organization), method: :delete %>
-      </td>
-    </tr>
-    <% end %>
-
-  </tbody>
-</table>
+<div class="dashboard-table">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Organization Name</th>
+        <th scope="col">Tech Stack</th>
+        <th scope="col">Description</th>
+        <th scope="col">Employee Count</th>
+        <th scope="col">Tech Team Size</th>
+        <th scope="col">Address</th>
+        <th scope="col">Twitter</th>
+        <th scope="col">Published Status</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @organizations.each do |organization| %>
+        <tr>
+          <th scope="row"><%= organization.id %></th>
+          <td><%= link_to organization.name, organization.website_url %></td>
+          <td><%= organization.technologies.map { |technology| technology.name }.join(', ') %></td>
+          <td><%= organization.description %></td>
+          <td><%= organization.employee_count %></td>
+          <td><%= organization.tech_team_size %></td>
+          <td><%= organization.address %></td>
+          <td><%= organization.twitter %></td>
+          <td><%= organization.published %></td>
+          <td>
+            <%= link_to "Edit", edit_organization_path(organization), class: "btn btn-outline-primary" %>
+            <%= link_to "Delete",  organization_path(organization), method: :delete, class: "btn btn-outline-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
