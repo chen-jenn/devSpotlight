@@ -3,7 +3,7 @@ class Admin::TechnologiesController < ApplicationController
   before_action :authorize_admin!
 
   def index
-    @technologies = Technology.order(name: :asc)
+    @technologies = Technology.order(created_at: :desc)
   end
 
   def new
@@ -11,14 +11,12 @@ class Admin::TechnologiesController < ApplicationController
   end
 
   def create
-    @technology = Technology.new
-
+    @technology = Technology.new technology_params
     if @technology.save
       redirect_to admin_technologies_path
     else
-      render :new 
+      render :new
     end
-
   end
 
   def destroy
@@ -32,5 +30,9 @@ class Admin::TechnologiesController < ApplicationController
       flas[:alert] = "Access Denied"
       redirect_to home_path
     end
+  end
+
+  def technology_params
+    params.require(:technology).permit(:name)
   end
 end
