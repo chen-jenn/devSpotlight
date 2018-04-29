@@ -6,13 +6,6 @@ class Admin::OrganizationsController < ApplicationController
     @organizations = Organization.order(name: :asc)
   end
 
-  def new
-  end
-
-  def create
-
-  end
-
   def edit
   end
 
