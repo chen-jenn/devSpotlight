@@ -16,8 +16,5 @@ class Ability
         user == (organization.user.permission_type == "manager")
       end
 
-      can(:crud, Events) do |event|
-        user == ()
-      end
   end
 end
