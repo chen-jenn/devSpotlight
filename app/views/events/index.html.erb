@@ -1,6 +1,11 @@
 <div class="container">
   This is Event Page
-  <% @events.each do |e| %>
-  <%= e[1][1] %>
+  <hr/>
+  <% @events["results"].each do |e| %>
+  <h1>  <%= e["group"]["who"] %> </h1>
+  <h2><a href="<%= e["event_url"] %>">  <%= e["group"]["name"] %>  </a> </h2>
+  <p>  <%= e["description"] %></p>
+  <hr/>
+
   <% end %>
 </div>

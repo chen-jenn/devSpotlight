@@ -1,9 +1,9 @@
 class EventsController < ApplicationController
 
   def index
-    params = { category: '1',
+    params = { category: '3',
         city: 'Vancouver',
-        country: 'Canada',
+        country: 'canada',
         status: 'upcoming',
         format: 'json',
         page: '20'}
