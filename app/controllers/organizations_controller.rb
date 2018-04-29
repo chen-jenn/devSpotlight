@@ -61,9 +61,11 @@ class OrganizationsController < ApplicationController
 
   def authorize_admin!
     unless current_user.permission_type == 3
-      flas[:alert] = "Access Denied"
+      flash[:alert] = "Access Denied"
       redirect_to home_path
     end
   end
 
 end
+
+

@@ -43,8 +43,8 @@
             Admin
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <%= link_to 'Organization', new_organization_path,{:class => "dropdown-item"}%>
-            <a class="dropdown-item" href="#">Another action</a>
+            <%= link_to 'Organization', admin_organizations_path,{:class => "dropdown-item"}%>
+            <%= link_to 'Technologies', admin_technologies_path, {:class => "dropdown-item"} %>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#">Something else here</a>
           </div>

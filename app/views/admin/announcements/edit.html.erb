@@ -1,0 +1,7 @@
+<h1>Edit announcement</h1>
+
+<%= simple_form_for @announcement do |f| %>
+  <%= f.input :article_name %>
+  <%= f.input :article_url %>
+  <%= f.submit "Edit" %>
+<% end %>
