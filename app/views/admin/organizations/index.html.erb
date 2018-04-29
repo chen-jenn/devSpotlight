@@ -3,8 +3,13 @@
 <table>
   <tbody>
     <tr>
-      <th><h4><strong>Name</strong></h4></th>
-      <th>Description</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Employee Count</th>
+        <th>Tech Team Size</th>
+        <th>Address</th>
+        <th>Twitter</th>
+        <th>Published Status</th>
     </tr>
 
     <% @organizations.each do |organization| %>
@@ -15,6 +20,11 @@
         <%= organization.technologies.map { |technology| technology.name }.join(', ') %>
       </td>
       <td><%= organization.description %></td>
+      <td><%= organization.employee_count %></td>
+      <td><%= organization.tech_team_size %></td>
+      <td><%= organization.address %></td>
+      <td><%= organization.twitter %></td>
+      <td><%= organization.published %></td>
     </tr>
     <% end %>
 
