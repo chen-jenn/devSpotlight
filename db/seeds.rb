@@ -8,7 +8,6 @@
 
 PASSWORD = 'password'
 
-Organization.destroy_all 
 Technology.destroy_all
 TechStack.destroy_all
 User.destroy_all
