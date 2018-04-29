@@ -45,9 +45,11 @@ gem 'underscore-rails'
 gem 'jquery-rails'
 gem 'carrierwave', '~> 1.0'
 gem "mini_magick"
-gem 'news-api'
-gem 'meetup_client'
 
+gem 'meetup_client'
+gem "simple_calendar", "~> 2.0"
+
+gem 'news-api'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

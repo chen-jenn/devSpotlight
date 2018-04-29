@@ -32,7 +32,7 @@ class Admin::UsersController < ApplicationController
 
   private
   def authorize_admin!
-    unless current_user.permission_type == 3
+    unless current_user.permission_type == "admin"
       flas[:alert] = "Access Denied"
       redirect_to home_path
     end

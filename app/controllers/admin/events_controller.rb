@@ -25,8 +25,8 @@ class Admin::EventsController < ApplicationController
 
   private
   def authorize_admin!
-    unless current_user.permission_type == 3
-      flas[:alert] = "Access Denied"
+    unless current_user.permission_type == "admin"
+      flash[:alert] = "Access Denied"
       redirect_to home_path
     end
   end
