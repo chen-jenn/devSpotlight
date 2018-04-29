@@ -51,7 +51,7 @@
     <div class="col">
       <div class="dropdown" >
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-      Team Stack
+      Tech Stack
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="buttons1">
       <button class="dropdown-item" type="button" id="">Action</button>
@@ -79,16 +79,23 @@
   <hr/>
 <div class="container">
   <div class="row">
+    <% @organizations.each do |organization| %>
+    <!-- repeat this code -->
      <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 mt-3 d-flex align-items-stretch">
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="https://pbs.twimg.com/profile_images/876936130549043200/2T5camnk_400x400.jpg" alt="Card image cap">
         <div class="card-body">
-          <p class="card-text"><a href="">Company 1 </a> </p><p>1200 employees</p>
+          <p class="card-text"><a href=""><%= organization.name %></a></p>
+          <p><small>Total Employees: <%= organization.employee_count %></small></p>
+          <p><small>Tech Team Size: <%= organization.tech_team_size %></small></p>
         </div>
       </div>
     </div>
-    </div>
+    <!-- end repeated code -->
+    <% end %>
+
   </div>
+</div>
   <hr/>
   <div class="row">
   <div class="col">
