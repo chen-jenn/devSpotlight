@@ -13,9 +13,11 @@ class OrganizationsController < ApplicationController
 
   def create
     @organization = Organization.new organization_params
-    @user = User.find params[:id]
-    if @user.permission_type != 1
+    @user = current_user
+    
+    if user_signed_in?
       if @organization.save
+        @user.update is_creator: true
         redirect_to organization_path
       else
         render :new
