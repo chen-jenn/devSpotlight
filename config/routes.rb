@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :announcements
   end
 
+  post('/images/:organization_id', { to: 'images#create', as: 'images' })
+  
   get('/', { to: 'welcome#index', as: 'home' })
   get('/show', { to: 'welcome#show'} )
 
