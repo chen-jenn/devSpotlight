@@ -1,0 +1,11 @@
+<div class="container">
+  <h1> Edit </h1>
+  <%= simple_form_for current_user do |f| %>
+    <%= f.input :first_name, label: "First Name"%>
+    <%= f.input :last_name, label: "Last Name"%>
+    <%= f.input :email %>
+    <%= f.input :password, label: "Password" %>
+    <%= f.input :password_confirmation, label: "Password Confirmation" %>
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>
