@@ -7,7 +7,6 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="css_for_the_group_project.css">
   </head>
   <body>
     <div class="container">
@@ -18,21 +17,25 @@
     </div>
 
     <script>
-    handler = Gmaps.build('Google');
+    let handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 
-      markers = handler.addMarkers(
-        [
-          {
-            "lat": 30.2,
-            "lng": 30.2,
-            "infowindow": "test"
-          }
-        ]
-      );
+
+    let results = []
+    <% @organizations.each do |organization| %>
+
+      results.push({
+                  "lat": <%= organization.latitude %>,
+                  "lng": <%= organization.longitude %>,
+                  "infowindow": "<%= organization.address %>"
+                  })
+    <% end %>
+
+      markers = handler.addMarkers(results);
+
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      handler.getMap().setZoom(17)
+      handler.getMap()
     });
 
     </script>
@@ -43,7 +46,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-        <form action="/">
+        <form>
           <input name="search" class="form-control" id="search" placeholder="Search">
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
