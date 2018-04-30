@@ -87,7 +87,7 @@
        <div class="card col-3 m-2" style="width: 18rem;">
         <img class="card-img-top" src="https://pbs.twimg.com/profile_images/876936130549043200/2T5camnk_400x400.jpg" alt="Card image cap">
         <div class="card-body">
-          <h3 class="card-title"><%= c.name %> <br>
+          <h3 class="card-title"><%= link_to c.name, organization_path(c) %> <br>
             <h6> Address: <%= c.address %></h6>
         </div>
       </div>
