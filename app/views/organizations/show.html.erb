@@ -9,10 +9,15 @@
 
     <a href="<%= @organization.website_url %>" class="card-link">Visit Website</a>
 
-    <% if current_user.present? %>
+    <% if current_user.present? && current_user.approved == false  %>
       |
-      <%= link_to "Claim This Business", :url => claim_request_path(@organization), method: 'post', class:"card-link" %>
+      <%= link_to "Claim This Business", claim_request_path, method: 'post'%>
+    <% elsif current_user.present? && current_user.approved == true %>
+      <br>
+      <small class='text-muted'>You've sent request (requires admin verification)</small>
     <% end %>
+    <hr>
+
   </div>
 </div>
 
