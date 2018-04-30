@@ -1,8 +1,26 @@
-<h1>Technologies</h1>
-  <%= link_to "Add Tech", new_admin_technology_path, class:"btn btn-primary" %></br>
 
-  <% @technologies.each do |technology| %>
-  <%= technology.name %>
-  <%= link_to 'Remove', admin_technology_path(technology), method: :delete %>
-  <hr>
-  <% end %>
+  <div class="dashboard-table">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Technology</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @technologies.each do |t| %>
+          <tr>
+            <th scope="row"><%= t.id %></th>
+            <td><%= t.name %></td>
+            <td>
+              <%= link_to 'Remove', admin_technology_path(t), method: :delete %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to "Add Tech", new_admin_technology_path, class:"btn btn-dark" %></br>
+  </div>

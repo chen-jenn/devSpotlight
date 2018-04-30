@@ -1,8 +1,13 @@
 <div class="container">
-  <h1>Articles <small>(external links)</small></h1>
+  <div class="mt-3 ml-2">
+    <h2>Articles Index</h2><br>
+  </div>
     <% @announcements.each do |announcement| %>
-      <%= link_to announcement.article_name, announcement.article_url %></br>
-      Organization: <%= announcement.organization.name %>
+      <%= link_to announcement.article_name, announcement.article_url %><br>
+      Organization: <%= announcement.organization.name %><br>
+      <small>
+        <%= link_to "Remove article from site", admin_announcement_path(announcement), method: :delete %>
+      </small>
       <hr>
     <% end %>
 </div>

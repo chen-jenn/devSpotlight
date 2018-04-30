@@ -1,25 +1,27 @@
-<h1>Upcoming Events</h1>
+<div class="mt-2 ml-3">
+  <h1>Events Directory</h1>
+</div>
 
-<table>
-  <tbody>
-   <tr>
-     <th>Event Name</th>
-     <th>Date</th>
-     <th>Organization</th>
-   </tr>
+<div class="dashboard-table">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Event Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Organization</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <th scope="row"><%= link_to event.event_name, event.event_url %></th>
+          <td><%= event.date %></td>
+          <td><%= link_to event.organization.name, organization_path(event.organization) %></td>
+          <td><%= link_to "Delete", admin_event_path(event), method: :delete %></td>
 
-
-  <% @events.each do |event| %>
-    <tr>
-  <!-- this will eventually be an external link -->
-    <td><%= link_to event.event_name, event.event_url %></td>
-    <!-- better date format -->
-    <td><%= event.date %></td>
-    <!-- link to the organization show page -->
-    <td><%= link_to event.organization.name, organization_path(event.organization) %></td>
-    <td><%= link_to "Edit", edit_admin_event_path(event)%></td>
-    <td><%= link_to "Delete", admin_event_path(event), method: :delete %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,6 +1,11 @@
-<h3>Add new technology (for the website)</h3>
+<div class="card mx-auto mt-4" style="width: 50rem;">
+  <div class="card-body">
+    <h3 class="card-title"><strong>Add New Technology</strong></h3>
 
-<%= simple_form_for @technology, url: admin_technologies_path, method: :post do |f| %>
-  <%= f.input :name %>
-  <%= f.submit "Submit", class: 'btn btn-primary' %>
-<% end %>
+    <%= simple_form_for @technology, url: admin_technologies_path, method: :post do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Submit", class: 'btn btn-dark' %>
+    <% end %>
+
+  </div>
+</div>
