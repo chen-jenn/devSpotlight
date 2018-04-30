@@ -11,13 +11,13 @@ h1{
   <%= month_calendar do |date| %>
   <% arr =  @events["results"].select {|event| Time.at(event["time"]/1000).strftime("20%y-%m-%d").to_s == date.to_s }%>
   <% if arr != [] %>
-  <%= date %>
+  <%= date.day %>
     <% arr.each do |a| %>
   <h1><a  href="<%= a["event_url"] %>">  <%= a["group"]["name"] %>  </a> </h1>
 
   <% end %>
   <% else %>
-  <%= date %>
+  <%= date.day %>
   <%end %>
   <% end %>
   <hr/>
