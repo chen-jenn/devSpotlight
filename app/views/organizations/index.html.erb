@@ -42,10 +42,10 @@
   <div class="row">
     <div class="col">
       <form>
-        <div class="form-group">
-
-          <input type="search" class="form-control" id="search" placeholder="Search">
-        </div>
+        <form action="/">
+          <input name="search" class="form-control" id="search" placeholder="Search">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     <hr/>
   <div class="row">
     <div class="col">
@@ -79,14 +79,15 @@
   <hr/>
 <div class="container">
   <div class="row">
-     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 mt-3 d-flex align-items-stretch">
-      <div class="card" style="width: 18rem;">
+       <% @search.each do |c| %>
+       <div class="card col-3 m-2" style="width: 18rem;">
         <img class="card-img-top" src="https://pbs.twimg.com/profile_images/876936130549043200/2T5camnk_400x400.jpg" alt="Card image cap">
         <div class="card-body">
-          <p class="card-text"><a href="">Company 1 </a> </p><p>1200 employees</p>
+          <h3 class="card-title"><%= c.name %> <br>
+            <h6> Address: <%= c.address %></h6>
         </div>
       </div>
-    </div>
+      <% end %>
     </div>
   </div>
   <hr/>

@@ -1,10 +1,15 @@
 class OrganizationsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :authorize_admin!, except: [:index, :new, :create]  
+  before_action :authorize_admin!, except: [:index, :new, :create]
+
+
 
   def index
+    word = params[:search]
     @organizations = Organization.order(created_at: :desc)
+    @search = Organization.where("name ILIKE ?","%#{word}%")
+
   end
 
   def new
@@ -14,11 +19,11 @@ class OrganizationsController < ApplicationController
   def create
     @organization = Organization.new organization_params
     @user = current_user
-    
+
     if user_signed_in?
       if @organization.save
         @user.update is_creator: true
-        redirect_to organizations_path 
+        redirect_to organizations_path
       else
         render :new
       end
@@ -73,5 +78,3 @@ class OrganizationsController < ApplicationController
   end
 
 end
-
-
