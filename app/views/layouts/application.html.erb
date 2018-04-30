@@ -59,8 +59,9 @@
             </li>
 
           <% end %>
-
-            <small class="user"><%= current_user.full_name %></small>
+            <li class="nav-item">
+            <small class="user">Hello, <%= link_to "#{current_user.full_name}", edit_user_path(current_user) %></small>
+            </li>
             <%= link_to 'Sign out', session_path, class: "nav-link", method: "delete" %>
 
         <% else %>

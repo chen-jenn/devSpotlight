@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resources :organizations
-  post('/show', { to: 'organizations#claim_request', as: 'claim_request' })
+  post('/organizations/show', { to: 'users#claim_request', as: 'claim_request' })
 
   resources :users
   resources :events
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     #if admin wants to create organization, go to the general create page
     resources :organizations, only: [:index]
-    resources :users, only: [:index, :destroy]
+    resources :users
     resources :events
     resources :technologies, except: [:show, :edit, :update]
     resources :announcements

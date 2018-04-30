@@ -64,13 +64,6 @@ class OrganizationsController < ApplicationController
     "#{id}-#{title}".parameterize
   end
 
-  def claim_request
-    # user = current_user
-    render plain: 'organizations#claim_request'
-    # claim request will patch the employee user's approved column to "true"
-    # user.approved = true
-    # user.save
-  end
 
   private
 
