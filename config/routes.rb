@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
   resources :organizations
+  post('/show', { to: 'organizations#claim_request', as: 'claim_request' })
+
   resources :users
   resources :events
   resources :technologies

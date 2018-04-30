@@ -1,9 +1,13 @@
 class OrganizationsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :authorize_admin!, except: [:index, :new, :create]
+  before_action :authorize_admin!, except: [:index, :new, :create, :show]
 
   def index
     @organizations = Organization.order(created_at: :desc)
+  end
+
+  def show
+    @organization = Organization.find params[:id]
   end
 
   def new
@@ -50,6 +54,14 @@ class OrganizationsController < ApplicationController
 
   def to_param
     "#{id}-#{title}".parameterize
+  end
+
+  def claim_request
+    # user = current_user
+    render plain: 'organizations#claim_request'
+    # claim request will patch the employee user's approved column to "true"
+    # user.approved = true
+    # user.save
   end
 
   private

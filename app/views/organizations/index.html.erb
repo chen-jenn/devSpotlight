@@ -87,7 +87,7 @@
       <div class="card" style="width: 18rem;">
         <img class="card-img-top" src="https://pbs.twimg.com/profile_images/876936130549043200/2T5camnk_400x400.jpg" alt="Card image cap">
         <div class="card-body">
-          <p class="card-text"><a href=""><%= organization.name %></a></p>
+          <p class="card-text"><%= link_to organization.name, organization_path(organization) %></p>
           <p><small>Total Employees: <%= organization.employee_count %></small></p>
           <p><small>Tech Team Size: <%= organization.tech_team_size %></small></p>
         </div>
