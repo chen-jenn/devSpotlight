@@ -17,35 +17,25 @@
     </div>
 
     <script>
-    handler = Gmaps.build('Google');
+    let handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 
-<<<<<<< HEAD
-    results = [];
+
+    let results = []
     <% @organizations.each do |organization| %>
-      results << {
+
+      results.push({
                   "lat": <%= organization.latitude %>,
                   "lng": <%= organization.longitude %>,
-                  "infowindow": <%= organization.address %>
-                  }
+                  "infowindow": "<%= organization.address %>"
+                  })
     <% end %>
 
       markers = handler.addMarkers(results);
 
-=======
-      markers = handler.addMarkers(
-        [
-          {
-            "lat": 30.2,
-            "lng": 30.2,
-            "infowindow": "test"
-          }
-        ]
-      );
->>>>>>> integration
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      handler.getMap().setZoom(17)
+      handler.getMap()
     });
 
     </script>
@@ -94,6 +84,7 @@
   <hr/>
 <div class="container">
   <div class="row">
+
     <% @organizations.each do |organization| %>
 
      <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 mt-3 d-flex align-items-stretch">
