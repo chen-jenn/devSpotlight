@@ -1,0 +1,46 @@
+<div class="card mx-auto mt-4" style="width: 75rem;">
+  <div class="card-body">
+    <h1 class="card-title"><strong><%= @organization.name %></strong></h1>
+    <h6 class="card-subtitle mb-2 text-muted"><%= @organization.technologies.map{ |technology| technology.name }.to_sentence %></h6>
+    <p class="card-text"><%= @organization.description %></p>
+    <p>Team Size: <%= @organization.employee_count %></br>
+      Tech Team Size: <%= @organization.tech_team_size %></br>
+    </p>
+
+    <a href="<%= @organization.website_url %>" class="card-link">Visit Website</a>
+
+    <% if current_user.present? %>
+      |
+      <%= link_to "Claim This Business", :url => claim_request_path(@organization), method: 'post', class:"card-link" %>
+    <% end %>
+  </div>
+</div>
+
+<hr width="75%">
+
+<div class="card mx-auto mt-4" style="width: 75rem;">
+  <div class="card-body">
+    <h3 class="card-title"><strong>Company Events</strong></h3>
+      <% @organization.events.each do |event| %>
+        <p class="card-text"><%= link_to event.event_name, event.event_url %></p>
+      <% end %>
+  </div>
+</div>
+
+<hr width="75%">
+
+<div class="card mx-auto mt-4" style="width: 75rem;">
+  <div class="card-body">
+    <h3 class="card-title"><strong>News</strong></h3>
+      <% @organization.announcements.each do |a| %>
+        <p class="card-text"><%= link_to a.article_name, a.article_url %></p>
+      <% end %>
+  </div>
+</div>
+
+<div class="card mx-auto mt-4" style="width: 75rem;">
+  <div class="card-body">
+    <h3 class="card-title"><strong>Twitter Feed</strong></h3>
+      <p class="card-text"><%= link_to @organization.twitter, "https://twitter.com" %></p>
+  </div>
+</div>
