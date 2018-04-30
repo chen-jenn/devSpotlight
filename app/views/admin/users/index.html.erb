@@ -9,6 +9,7 @@
      <th>User Type</th>
      <th>Organization</th>
      <th>Status</th>
+
    </tr>
 
    <% @users.each do |user| %>
@@ -33,6 +34,8 @@
        <% end %>
 
        <td><%= user.approved %></td>
+
+
      </tr>
    <% end %>
  </tbody>

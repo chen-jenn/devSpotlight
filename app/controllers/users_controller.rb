@@ -29,6 +29,12 @@ class UsersController < ApplicationController
     
   end
 
+  def claim_request
+    user = current_user
+    user.approved = true
+    user.save
+  end
+
   private
 
   def user_params
@@ -38,7 +44,8 @@ class UsersController < ApplicationController
       :email,
       :password,
       :password_confirmation,
-      :permission_type
+      :permission_type,
+      :approved
     )
   end
 

@@ -12,7 +12,17 @@ class Admin::UsersController < ApplicationController
 
   def update
     @user = User.find params[:id]
-    if @user.update user_params
+    pa = user_params
+
+    if user_params[:permission_type] == '1'
+      pa[:permission_type] = 'team_member'
+    elsif user_params[:permission_type] == '2'
+      pa[:permission_type] = 'manager'
+    elsif user_params[:permission_type] == '3'
+      pa[:permission_type] = 'admin'
+    end
+
+    if @user.update pa
       redirect_to admin_user_path(@user)
     else
       render :edit
@@ -33,13 +43,13 @@ class Admin::UsersController < ApplicationController
   private
   def authorize_admin!
     unless current_user.permission_type == "admin"
-      flas[:alert] = "Access Denied"
+      flash[:alert] = "Access Denied"
       redirect_to home_path
     end
   end
 
   def user_params
-    # admin shouldnt be able to change email or names 
+    # admin shouldnt be able to change email or names
     params.require(:user).permit(:approved, :permission_type, :organization_id)
   end
 end

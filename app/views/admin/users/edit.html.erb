@@ -1,6 +1,6 @@
 <h1>Edit <%= @user.full_name %>'s information</h1>
 
-<%= simple_form_for @user do |f| %>
+<%= simple_form_for @user, url: admin_user_path, method: :patch do |f| %>
 <!-- make this a drop down that says general, manager, admin -->
   <%= f.input :permission_type %>
   <%= f.input :approved %>
