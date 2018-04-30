@@ -29,7 +29,9 @@ gem "simple_calendar", "~> 2.0"
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
 gem 'underscore-rails'
+gem 'meetup_client'
 
+gem 'news-api'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end

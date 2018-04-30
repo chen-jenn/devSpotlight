@@ -17,21 +17,25 @@
     </div>
 
     <script>
-    handler = Gmaps.build('Google');
+    let handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
 
-      markers = handler.addMarkers(
-        [
-          {
-            "lat": 30.2,
-            "lng": 30.2,
-            "infowindow": "test"
-          }
-        ]
-      );
+
+    let results = []
+    <% @organizations.each do |organization| %>
+
+      results.push({
+                  "lat": <%= organization.latitude %>,
+                  "lng": <%= organization.longitude %>,
+                  "infowindow": "<%= organization.address %>"
+                  })
+    <% end %>
+
+      markers = handler.addMarkers(results);
+
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
-      handler.getMap().setZoom(17)
+      handler.getMap()
     });
 
     </script>
@@ -42,11 +46,10 @@
 <div class="container">
   <div class="row">
     <div class="col">
-      <form>
-        <div class="form-group">
-
-          <input type="search" class="form-control" id="search" placeholder="Search">
-        </div>
+        <form action="/">
+          <input name="search" class="form-control" id="search" placeholder="Search">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
     <hr/>
   <div class="row">
     <div class="col">
@@ -80,21 +83,16 @@
   <hr/>
 <div class="container">
   <div class="row">
-    <% @organizations.each do |organization| %>
-
-     <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4 mt-3 d-flex align-items-stretch">
-      <div class="card" style="width: 18rem;">
+       <% @search.each do |c| %>
+       <div class="card col-3 m-2" style="width: 18rem;">
         <img class="card-img-top" src="https://pbs.twimg.com/profile_images/876936130549043200/2T5camnk_400x400.jpg" alt="Card image cap">
         <div class="card-body">
-          <p class="card-text"><a href=""><%= organization.name %></a></p>
-          <p><small>Total Employees: <%= organization.employee_count %></small></p>
-          <p><small>Tech Team Size: <%= organization.tech_team_size %></small></p>
+          <h3 class="card-title"><%= c.name %> <br>
+            <h6> Address: <%= c.address %></h6>
         </div>
       </div>
+      <% end %>
     </div>
-
-    <% end %>
-
   </div>
 </div>
   <hr/>

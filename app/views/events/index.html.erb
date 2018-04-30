@@ -1,17 +1,25 @@
+<style>
+h1{
+  font-size: 10px;
+}
+</style>
+
+
 <div class="container">
   This is Event Page
   <hr/>
   <%= month_calendar do |date| %>
-    <%= date %>
+  <% arr =  @events["results"].select {|event| Time.at(event["time"]/1000).strftime("20%y-%m-%d").to_s == date.to_s }%>
+  <% if arr != [] %>
+  <%= date.day %>
+    <% arr.each do |a| %>
+  <h1><a  href="<%= a["event_url"] %>">  <%= a["group"]["name"] %>  </a> </h1>
+
+  <% end %>
+  <% else %>
+  <%= date.day %>
+  <%end %>
   <% end %>
   <hr/>
-<div>
-  <% @events["results"].each do |e| %>
-  <h1>  <%= e["group"]["who"] %> </h1>
-  <h2><a href="<%= e["event_url"] %>">  <%= e["group"]["name"] %>  </a> </h2>
-  <p><%= Time.at(e["time"]).strftime("%H:%M:%S") %></p>
-  <p>  <%= e["description"] %></p>
-  <hr/>
-    <% end %>
-</div>
-  </div>
+
+  <div>
