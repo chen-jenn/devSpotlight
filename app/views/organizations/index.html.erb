@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
-  </head>
+
   <body>
     <div class="container">
       <div class="row">
@@ -22,12 +13,12 @@
 
 
     let results = []
-    <% @organizations.each do |organization| %>
+    <% @search.each do |s| %>
 
       results.push({
-                  "lat": <%= organization.latitude %>,
-                  "lng": <%= organization.longitude %>,
-                  "infowindow": "<%= organization.address %>"
+                  "lat": <%= s.latitude %>,
+                  "lng": <%= s.longitude %>,
+                  "infowindow": "<%= s.address %>"
                   })
     <% end %>
 
@@ -46,7 +37,7 @@
 <div class="container">
   <div class="row">
     <div class="col">
-        <form action="/">
+        <form>
           <input name="search" class="form-control" id="search" placeholder="Search">
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
@@ -85,7 +76,11 @@
   <div class="row">
        <% @search.each do |c| %>
        <div class="card col-3 m-2" style="width: 18rem;">
+         <% if c.image? %>
+         <img class="card-img-top" src="<%=c.image%>" alt="Card image cap">
+        <% else %>
         <img class="card-img-top" src="https://pbs.twimg.com/profile_images/876936130549043200/2T5camnk_400x400.jpg" alt="Card image cap">
+        <% end %>
         <div class="card-body">
           <h3 class="card-title"><%= link_to c.name, organization_path(c) %> <br>
             <h6> Address: <%= c.address %></h6>
@@ -112,4 +107,4 @@
 </div>
 
   </body>
-</html>
+
