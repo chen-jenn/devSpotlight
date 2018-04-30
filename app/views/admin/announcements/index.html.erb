@@ -1,5 +1,5 @@
 <div class="container">
-  <h1>Articles <small>(external links)</small></h1>
+  <h1>Articles</h1><br>
     <% @announcements.each do |announcement| %>
       <%= link_to announcement.article_name, announcement.article_url %></br>
       Organization: <%= announcement.organization.name %>
