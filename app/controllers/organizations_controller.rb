@@ -3,7 +3,10 @@ class OrganizationsController < ApplicationController
   before_action :authorize_admin!, except: [:index, :new, :create, :show]
 
   def index
+    word = params[:search]
     @organizations = Organization.order(created_at: :desc)
+    @search = Organization.where("name ILIKE ?","%#{word}%")
+
   end
 
   def show

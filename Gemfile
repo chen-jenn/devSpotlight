@@ -9,6 +9,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap'
 gem 'cancancan'
 gem 'carrierwave', '~> 1.0'
+gem 'chosen-rails'
 gem 'cocoon'
 gem 'coffee-rails', '~> 4.2'
 gem 'faker'
@@ -28,7 +29,9 @@ gem "simple_calendar", "~> 2.0"
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
 gem 'underscore-rails'
+gem 'meetup_client'
 
+gem 'news-api'
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
