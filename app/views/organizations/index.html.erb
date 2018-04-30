@@ -20,14 +20,16 @@
     <script>
     handler = Gmaps.build('Google');
     handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
-      markers = handler.addMarkers([
-        {
-          "lat": '49.280256',
-          "lng": '-123.107343',
 
-          "infowindow": "hello!"
-        }
-      ]);
+      markers = handler.addMarkers(
+        [
+          {
+            "lat": 30.2,
+            "lng": 30.2,
+            "infowindow": "test"
+          }
+        ]
+      );
       handler.bounds.extendWith(markers);
       handler.fitMapToBounds();
       handler.getMap().setZoom(17)
@@ -51,7 +53,7 @@
     <div class="col">
       <div class="dropdown" >
     <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
-      Team Stack
+      Tech Stack
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2" id="buttons1">
       <button class="dropdown-item" type="button" id="">Action</button>
@@ -90,6 +92,7 @@
       <% end %>
     </div>
   </div>
+</div>
   <hr/>
   <div class="row">
   <div class="col">

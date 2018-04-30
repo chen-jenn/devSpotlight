@@ -1,9 +1,6 @@
 class OrganizationsController < ApplicationController
-
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :authorize_admin!, except: [:index, :new, :create]
-
-
 
   def index
     word = params[:search]
@@ -46,7 +43,12 @@ class OrganizationsController < ApplicationController
   def destroy
     @organization = Organization.find params[:id]
     @organization.destroy
-    redirect_to organizations_path
+
+    if current_user.permission_type == 'admin'
+      redirect_to admin_organizations_path
+    else
+      redirect_to organizations_path
+    end
   end
 
   def to_param
