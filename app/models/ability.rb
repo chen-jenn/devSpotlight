@@ -3,7 +3,7 @@ class Ability
 
   def initialize(user)
       user ||= User.new
-      if user.permission_type == 3 #super admin
+      if user.permission_type == "admin" #super admin
         can :manage, :all
       else
         can :read, :all
@@ -13,11 +13,8 @@ class Ability
 
       can(:crud, Organization) do |organization|
         # manager can change their own organization
-        user == (organization.user.permission_type == 2)
+        user == (organization.user.permission_type == "manager")
       end
 
-      can(:crud, Events) do |event|
-        user == ()
-      end
   end
 end

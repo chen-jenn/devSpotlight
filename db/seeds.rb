@@ -14,6 +14,7 @@ User.destroy_all
 Event.destroy_all
 Announcement.destroy_all
 
+
 20.times do
   o = Organization.create(
     name: Faker::Company.name,
@@ -22,8 +23,8 @@ Announcement.destroy_all
     tech_team_size: rand(1..5),
     address: Faker::Address.street_address,
     website_url: Faker::Internet.url('example.com'),
-    twitter: Faker::Twitter.user,
-    published: true
+    twitter: Faker::Twitter.screen_name,
+    published: [true, false].sample
   )
 end
 
