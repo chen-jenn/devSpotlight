@@ -15,13 +15,20 @@ Event.destroy_all
 Announcement.destroy_all
 Organization.destroy_all
 
+address_random = [
+                  "142 West Hastings Avenue, Vancouver, BC, Canada",
+                  "1490 West Broadway Avenue, Vancouver, BC V6H 4E8, Canada",
+                  "128 West Hastings Avenue, Vancouver, BC V6B 1G8, Canada",
+                  "455 Granville Street, Vancouver, BC V6C 1T1, Canada"
+                  ]
+
 20.times do
   o = Organization.create(
     name: Faker::Company.name,
     description: Faker::Company.catch_phrase,
     employee_count: rand(5..30),
     tech_team_size: rand(1..5),
-    address: "142 West Hastings Avenue, Vancouver, BC, Canada",
+    address: address_random[rand(0..3)],
     website_url: Faker::Internet.url('example.com'),
     twitter: Faker::Twitter.screen_name,
     published: [true, false].sample
