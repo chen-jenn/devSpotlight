@@ -4,6 +4,7 @@ class Organization < ApplicationRecord
   has_many :events, dependent: :destroy
   has_many :technologies, through: :tech_stacks
   has_many :announcements, dependent: :destroy
+  has_many :images, dependent: :destroy
 
   validates :name, presence: true, uniqueness: true
 

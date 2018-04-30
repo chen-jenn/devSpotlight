@@ -1,3 +1,17 @@
 <h1 class="title-page">Edit Organization</h1>
 
+<div class="form-style card mt-4">
+  <h2>Add photos of your organization</h2> </br >
+  <%= simple_form_for @image, url: images_path(@organization), method: :post do |f| %>
+    <div class="form-group">
+      <%= f.input :image, label_html: { class: 'label-input' } %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Submit", class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>
+
+<%= image_tag @organization.image.url(:thumb) if @organization.image.present? %>
+
 <%= render 'form' %>
