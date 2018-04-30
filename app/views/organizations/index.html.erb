@@ -22,12 +22,12 @@
 
 
     let results = []
-    <% @organizations.each do |organization| %>
+    <% @search.each do |s| %>
 
       results.push({
-                  "lat": <%= organization.latitude %>,
-                  "lng": <%= organization.longitude %>,
-                  "infowindow": "<%= organization.address %>"
+                  "lat": <%= s.latitude %>,
+                  "lng": <%= s.longitude %>,
+                  "infowindow": "<%= s.address %>"
                   })
     <% end %>
 
