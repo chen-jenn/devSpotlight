@@ -1,24 +1,11 @@
-# README
+# devSpotlight
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+devSpotlight is an application created to help connect the tech community!  It makes it ease to find out information about tech companies in Vancouver. 
 
-Things you may want to cover:
+The Google Maps integration helps the users locate the companies that they are interested in and gives some more extra details that might be relevante.
 
-* Ruby version
+Users can also add companies to the app directory and become an admin for that company. Extra information can be added and employees can also connect with every company. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
+* Ruby version 5.1
 
 * ...
