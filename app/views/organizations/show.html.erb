@@ -9,10 +9,6 @@
 
     <a href="<%= @organization.website_url %>" class="card-link">Visit Website</a>
 
-    <% if user_logged_in? %>
-      |
-      <%= link_to "Claim This Business", url: claim_request_path(@organization), method: 'post', class:"card-link" %>
-    <% end %>
   </div>
 </div>
 
