@@ -25,3 +25,5 @@ yarn-debug.log*
 
 # Image uploader
 /public/uploads/*
+
+/config/initializers/app_keys.rb
