@@ -5,7 +5,7 @@ class OrganizationsController < ApplicationController
 
   def index
     word = params[:search]
-    @organizations = Organization.order(created_at: :desc)
+    @organizations = Organization.order(name: :asc)
     @search = Organization.where("name ILIKE ?","%#{word}%")
   end
 

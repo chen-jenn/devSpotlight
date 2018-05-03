@@ -20,6 +20,7 @@ class Admin::TechnologiesController < ApplicationController
   end
 
   def destroy
+    @technology = Technology.find params[:id]
     @technology.destroy
     redirect_to admin_technologies_path
   end
