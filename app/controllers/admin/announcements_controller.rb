@@ -34,7 +34,7 @@ class Admin::AnnouncementsController < ApplicationController
   def destroy
     @announcement = Announcement.find params[:id]
     @announcement.destroy
-    redirect_to announcements_path
+    redirect_to admin_announcements_path
   end
 
   # def show
