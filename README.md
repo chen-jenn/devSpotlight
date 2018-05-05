@@ -1,11 +1,14 @@
 # devSpotlight
 
-devSpotlight is an application created to help connect the tech community!  It makes it ease to find out information about tech companies in Vancouver. 
+devSpotlight is an application built with Rails that serves as a focal point for the tech community in Vancouver. Google Maps API integration helps the users locate companies they are interested in and can visit a company's profile for more detailed information about the organization. In addition, the Meetup API and a news API gem are also implemented to provide a calendar of relevant tech events and trending news articles in the community.
 
-The Google Maps integration helps the users locate the companies that they are interested in and gives some more extra details that might be relevante.
+Users also have the ability to add organizations to the full list (tech organizations directory) and request to be an employee or manager of that company.
 
-Users can also add companies to the app directory and become an admin for that company. Extra information can be added and employees can also connect with every company. 
+# Getting Started
+Built using Rails version 5.1.6
+PostgreSQL
+mini_magick gem requires ImageMagick to be installed on your machine
 
-* Ruby version 5.1
-
-* ...
+1. Navigate to the project directory and run ```bundle```
+2. Database creation: ```rails db:create```
+3. Seeding data: ```rails db:seed```
