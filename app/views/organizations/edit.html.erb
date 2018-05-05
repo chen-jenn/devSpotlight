@@ -10,8 +10,20 @@
       <%= f.submit "Submit", class: 'btn btn-secondary' %>
     </div>
   <% end %>
-</div>
 
-<%= image_tag @organization.image.url(:thumb) if @organization.image.present? %>
+  <% if @images.any? %>
+    <h4>Uploaded Images</h4>
+      <div class="d-flex">
+        <% @images.each do |img| %>
+          <span class="displayImg">
+            <%= image_tag img.image.url("medium") %>
+          </span>
+        <% end %>
+      </div>
+  <% else %>
+    <h4>Upload your first image now.</h4>  
+  <% end %>
+
+</div>
 
 <%= render 'form' %>

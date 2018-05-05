@@ -10,6 +10,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
+    @images = @organization.images
   end
 
   def new
@@ -35,6 +36,7 @@ class OrganizationsController < ApplicationController
   end
 
   def edit
+    @images = @organization.images
     @image = Image.new
   end
 
@@ -63,7 +65,6 @@ class OrganizationsController < ApplicationController
   def to_param
     "#{id}-#{title}".parameterize
   end
-
 
   private
 
