@@ -6,11 +6,22 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+PASSWORD = 'password'
+
 Technology.destroy_all
 TechStack.destroy_all
 User.destroy_all
 Event.destroy_all
 Announcement.destroy_all
+Organization.destroy_all
+
+address_random = [
+                  "142 West Hastings Avenue, Vancouver, BC, Canada",
+                  "1490 West Broadway Avenue, Vancouver, BC V6H 4E8, Canada",
+                  "128 West Hastings Avenue, Vancouver, BC V6B 1G8, Canada",
+                  "455 Granville Street, Vancouver, BC V6C 1T1, Canada"
+                  ]
+
 
 20.times do
   o = Organization.create(
@@ -18,10 +29,12 @@ Announcement.destroy_all
     description: Faker::Company.catch_phrase,
     employee_count: rand(5..30),
     tech_team_size: rand(1..5),
-    address: Faker::Address.street_address,
+    
+    address: address_random[rand(0..3)],
+
     website_url: Faker::Internet.url('example.com'),
-    twitter: Faker::Twitter.user,
-    published: true
+    twitter: Faker::Twitter.screen_name,
+    published: [true, false].sample
   )
 end
 
@@ -38,8 +51,10 @@ super_user = User.create(
   last_name: "Snow",
   email: "js@winterfell.gov",
   approved: true,
-  permission_type: 3
-  # password: PASSWORD
+  permission_type: 3,
+  password: PASSWORD,
+  password_confirmation: PASSWORD,
+  organization_id: organizations.sample.id
 )
 
 10.times.each do
@@ -50,9 +65,11 @@ super_user = User.create(
     first_name: first_name,
     last_name: last_name,
     email: "#{first_name.downcase}.#{last_name.downcase}@example.com",
-    approved: true,
-    permission_type: 2
-    # password: PASSWORD
+    approved: [true, false].sample,
+    permission_type: [1,2].sample,
+    password: PASSWORD,
+    password_confirmation: PASSWORD,
+    organization_id: organizations.sample.id
   )
 end
 
@@ -63,7 +80,7 @@ users = User.all
     event_name: Faker::StarTrek.villain,
     date: Faker::Date.forward(23),
     event_url: Faker::Internet.url('example.com'),
-    organization: organizations.sample 
+    organization: organizations.sample
   )
 end
 
@@ -73,7 +90,7 @@ events = Event.all
   Announcement.create(
     article_name: Faker::Movie.quote,
     article_url: Faker::Internet.url('example.com'),
-    organization: organizations.sample  
+    organization: organizations.sample
   )
 end
 
@@ -81,11 +98,11 @@ announcements = Announcement.all
 
   # Organization.shuffle[0..rand(technologies.count)].each do |t|
   #   TechStack.create(technology_id: t, organization_id: o)
- 
+
 
 puts "Created a #{organizations.count} organizations"
 puts "Created #{users.count} users"
 puts "Created a #{events.count} events"
 puts "Created a #{technologies.count} technologies"
 puts "Created a #{announcements.count} announcements"
-# puts "Login with #{super_user.email} and password of '#{PASSWORD}'"
+puts "Login with #{super_user.email} and password of '#{PASSWORD}'"

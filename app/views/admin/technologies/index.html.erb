@@ -1,0 +1,26 @@
+
+  <div class="dashboard-table">
+    <table class="table">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Technology</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @technologies.each do |t| %>
+          <tr>
+            <th scope="row"><%= t.id %></th>
+            <td><%= t.name %></td>
+            <td>
+              <%= link_to 'Remove', admin_technology_path(t), method: :delete %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= link_to "Add Tech", new_admin_technology_path, class:"btn btn-dark" %></br>
+  </div>

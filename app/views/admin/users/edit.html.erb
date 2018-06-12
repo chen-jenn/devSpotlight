@@ -1,0 +1,10 @@
+<h1>Edit <%= @user.full_name %>'s information</h1>
+
+<%= simple_form_for @user, url: admin_user_path, method: :patch do |f| %>
+<!-- make this a drop down that says general, manager, admin -->
+  <%= f.input :permission_type %>
+  <%= f.input :approved %>
+  <!-- change this to have the organization name instead of id -->
+  <%= f.input :organization_id %>
+  <%= f.submit class: 'btn btn-primary'%>
+<% end %>

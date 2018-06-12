@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+  <% @all_articles.each do |arti|  %>
+  <div class="card col-3 m-2" style="width: 18rem;">
+  <img class="card-img-top" src="<%=arti.urlToImage%>" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title"><%= arti.title %> <br>
+</h5>
+    <h6> - <%= arti.name %></h6>
+    <a href="<%= arti.url %>
+" class="btn btn-primary">Go to news</a>
+  </div>
+</div>
+<% end %>
+</div>
+</div>

@@ -1,0 +1,29 @@
+<h1 class="title-page">Edit Organization</h1>
+
+<div class="form-style card mt-4">
+  <h2>Add photos of your organization</h2> </br >
+  <%= simple_form_for @image, url: images_path(@organization), method: :post do |f| %>
+    <div class="form-group">
+      <%= f.input :image, label_html: { class: 'label-input' } %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Submit", class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+
+  <% if @images.any? %>
+    <h4>Uploaded Images</h4>
+      <div class="d-flex">
+        <% @images.each do |img| %>
+          <span class="displayImg">
+            <%= image_tag img.image.url("medium") %>
+          </span>
+        <% end %>
+      </div>
+  <% else %>
+    <h4>Upload your first image now.</h4>  
+  <% end %>
+
+</div>
+
+<%= render 'form' %>

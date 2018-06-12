@@ -1,0 +1,73 @@
+<body>
+  <div class="card mt-5 form-style">
+    <div class="container map">
+      <div class="row">
+        <div class="col">
+          <div style='width: 800px;'>
+            <div id="map" style='width: 800px; height: 400px;'></div>
+          </div>
+
+          <script>
+            let handler = Gmaps.build('Google');
+            handler.buildMap({ provider: {}, internal: {id: 'map'}}, function(){
+
+
+            let results = []
+            <% @search.each do |s| %>
+
+              results.push({
+                          "lat": <%= s.latitude %>,
+                          "lng": <%= s.longitude %>,
+                          "infowindow": "<%= s.address %>"
+                          })
+            <% end %>
+
+              markers = handler.addMarkers(results);
+
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              handler.getMap()
+            });
+
+          </script>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col">
+          <form>
+            <input name="search" class="form-control" id="search" placeholder="Search">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>    
+    </div>       
+  </div>       
+
+  <div class="container">
+    <div class="row">
+      <% @search.each do |company| %>
+        
+        <div class="col-xs-12 col-sm-8 col-md-6 col-lg-3 mt-3 d-flex align-items-stretch">
+    
+          <div class="card m-2" style="width: 18rem;">
+
+            <% if company.image? %>
+              <img class="card-img-top" src="<%= company.image %>" alt="Card image cap">
+            <% else %>
+              <img class="card-img-top" src="https://pbs.twimg.com/profile_images/876936130549043200/2T5camnk_400x400.jpg" alt="Card image cap">
+            <% end %>
+
+            <h3 class="card-title m-2"><%= link_to company.name, organization_path(company), class: "title-link" %>
+          
+          </div>
+        </div>
+
+      <% end %>  
+    </div>
+  </div>
+
+</body>
+

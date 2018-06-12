@@ -1,5 +1,6 @@
 class User < ApplicationRecord
-  belongs_to :organization
+  belongs_to :organization, optional: true
+  has_secure_password
 
   validates :first_name, :last_name, presence: true
 
@@ -10,7 +11,10 @@ class User < ApplicationRecord
     uniqueness: true,
     format: VALID_EMAIL_REGEX
 
+  enum permission_type: { team_member: 1, manager: 2, admin: 3 }
+
   def full_name
     "#{first_name} #{last_name}"
   end
+
 end

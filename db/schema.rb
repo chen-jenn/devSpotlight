@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180428200353) do
+ActiveRecord::Schema.define(version: 20180430051306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,23 @@ ActiveRecord::Schema.define(version: 20180428200353) do
     t.index ["organization_id"], name: "index_events_on_organization_id"
   end
 
+  create_table "image_attachments", force: :cascade do |t|
+    t.bigint "image_id"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["image_id"], name: "index_image_attachments_on_image_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.bigint "organization_id"
+    t.text "description"
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organization_id"], name: "index_images_on_organization_id"
+  end
+
   create_table "organizations", force: :cascade do |t|
     t.string "name"
     t.text "description"
@@ -45,6 +62,9 @@ ActiveRecord::Schema.define(version: 20180428200353) do
     t.boolean "published"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image"
+    t.float "latitude"
+    t.float "longitude"
   end
 
   create_table "tech_stacks", force: :cascade do |t|
@@ -67,16 +87,19 @@ ActiveRecord::Schema.define(version: 20180428200353) do
     t.string "last_name"
     t.string "email"
     t.boolean "approved"
-    t.integer "permission_type"
+    t.integer "permission_type", default: 1
     t.string "password_digest"
     t.bigint "organization_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_creator"
     t.index ["organization_id"], name: "index_users_on_organization_id"
   end
 
   add_foreign_key "announcements", "organizations"
   add_foreign_key "events", "organizations"
+  add_foreign_key "image_attachments", "images"
+  add_foreign_key "images", "organizations"
   add_foreign_key "tech_stacks", "organizations"
   add_foreign_key "tech_stacks", "technologies"
   add_foreign_key "users", "organizations"

@@ -1,0 +1,41 @@
+<div class="form-style card mt-4">
+    <%= simple_form_for @organization do |f| %>
+      <div class="form-group">
+        <%= f.input :name, required: false, input_html: { class: 'form-control' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :description, required: false, input_html: { class: 'form-control', rows: '4' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :employee_count, required: false, input_html: { class: 'form-control' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :tech_team_size, required: false, input_html: { class: 'form-control' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :address, required: false, input_html: { class: 'form-control' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :website_url, required: false, input_html: { class: 'form-control' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :twitter, required: false, input_html: { class: 'form-control' } %>
+      </div>
+      <div class="form-check">
+        <%= f.input :published, required: false, input_html: { class: 'form-check-input' } %>
+      </div>
+      <div class="form-group">
+        <%= f.association :technologies, input_html: { class: 'chosen-select' }, label_html: { class: 'label-input' } %>
+      </div>
+      <div class="form-group">
+        <%= f.input :image, label_html: { class: 'label-input' } %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Submit", class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+</div>
+
+<script>
+  $(".chosen-select").chosen({ max_selected_options: 10 });
+</script>       

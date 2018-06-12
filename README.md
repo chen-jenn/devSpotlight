@@ -1,24 +1,14 @@
-# README
+# devSpotlight
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+devSpotlight is an application built with Rails that serves as a focal point for the tech community in Vancouver. Google Maps API integration helps the users locate companies they are interested in and can visit a company's profile for more detailed information about the organization. In addition, the Meetup API and a news API gem are also implemented to provide a calendar of relevant tech events and trending news articles in the community.
 
-Things you may want to cover:
+Users also have the ability to add organizations to the full list (tech organizations directory) and request to be an employee or manager of that company.
 
-* Ruby version
+# Getting Started
+Built using Rails version 5.1.6
+PostgreSQL
+mini_magick gem requires ImageMagick to be installed on your machine
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. Navigate to the project directory and run ```bundle```
+2. Database creation: ```rails db:create```
+3. Seeding data: ```rails db:seed```

@@ -1,0 +1,27 @@
+<div class="mt-2 ml-3">
+  <h1>Events Directory</h1>
+</div>
+
+<div class="dashboard-table">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">Event Name</th>
+        <th scope="col">Date</th>
+        <th scope="col">Organization</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @events.each do |event| %>
+        <tr>
+          <th scope="row"><%= link_to event.event_name, event.event_url %></th>
+          <td><%= event.date %></td>
+          <td><%= link_to event.organization.name, organization_path(event.organization) %></td>
+          <td><%= link_to "Delete", admin_event_path(event), method: :delete %></td>
+
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

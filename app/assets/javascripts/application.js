@@ -13,5 +13,8 @@
 //= require rails-ujs
 //= require jquery3
 //= require popper
+//= require chosen-jquery
 //= require bootstrap
+//= require underscore
+//= require gmaps/google
 //= require_tree .
